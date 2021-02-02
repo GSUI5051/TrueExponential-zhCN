@@ -32,7 +32,7 @@ angular.module('incremental',['ngAnimate']).directive('onFinishRender', function
 			version: $scope.version,
 			sprintTimes: [],
 			sprintSecondTimes: [],
-			preferences: {logscale: false,
+			preferences: {logscale: true,
 				abstractVisible: true},
 			lastLogin: null
 			};
@@ -53,32 +53,32 @@ angular.module('incremental',['ngAnimate']).directive('onFinishRender', function
 		balance the goals
 		*/
 		// Constants
-		$scope.prestigeGoal = [new Decimal("1e2"),
-							new Decimal("1e5"),
-							new Decimal("1e15"),
-							new Decimal("1e200"),
-							new Decimal("1e1250"),
-							new Decimal("1e2500"),
-							new Decimal("1e5000"),
-							new Decimal("1e12500"),
-							new Decimal("1e25000"),
-							new Decimal("1e50000"),
-							new Decimal("1e100000"),
-							new Decimal("1e9000000000000000")];
+		$scope.prestigeGoal = [new Decimal("1"),
+							new Decimal("2"),
+							new Decimal("3"),
+							new Decimal("4e6"),
+							new Decimal("5"),
+							new Decimal("6"),
+							new Decimal("7"),
+							new Decimal("8"),
+							new Decimal("9"),
+							new Decimal("10"),
+							new Decimal("11"),
+							new Decimal("12")];
 		
 		$scope.prestigeTier = 0;
 		// Constants
-		$scope.secondPrestigeGoal = [new Decimal("1e4"),
-			 							new Decimal("1e500"),
-										new Decimal("1e3000"),
-										new Decimal("1e10000"),
-										new Decimal("1e25000"),
-										new Decimal("1e50000"),
-										new Decimal("1e125000"),
-										new Decimal("1e250000"),
-										new Decimal("1e500000"),
-										new Decimal("1e1000000"),
-										new Decimal("1e2500000")];
+		$scope.secondPrestigeGoal = [new Decimal("1"),
+			 							new Decimal("2"),
+										new Decimal("3"),
+										new Decimal("4"),
+										new Decimal("5"),
+										new Decimal("6"),
+										new Decimal("7"),
+										new Decimal("8"),
+										new Decimal("9"),
+										new Decimal("10"),
+										new Decimal("11")];
 		
 		var producerUpgradeBasePrice = [];
 						
@@ -154,11 +154,11 @@ angular.module('incremental',['ngAnimate']).directive('onFinishRender', function
 			}
 			if(force || upgradeDiv.innerHTML.trim() == "placeholder"){
 				if($scope.prestigeTier == 0){
-					upgradeDiv.innerHTML = "<b>Lemma "+(number+1)+".</b>$$^{"+$scope.player.multiplierUpgradeLevel[number]+"}\\quad \\frac{n(t)}{"+prettifyNumberTeX($scope.player.multiplierUpgradePrice[number])+"} \\Rightarrow\\; r(t) + "+prettifyNumberTeX($scope.multiplierUpgradePower[number])+"$$";
+					upgradeDiv.innerHTML = "<b>引理 "+(number+1)+".</b>$$^{"+$scope.player.multiplierUpgradeLevel[number]+"}\\quad \\frac{n(t)}{"+prettifyNumberTeX($scope.player.multiplierUpgradePrice[number])+"} \\Rightarrow\\; r(t) + "+prettifyNumberTeX($scope.multiplierUpgradePower[number])+"$$";
 				}
 				if($scope.prestigeTier == 1){
 					if(number == 0){
-						upgradeDiv.innerHTML = "<b>Corollary "+(number+1)+".</b>" +
+						upgradeDiv.innerHTML = "<b>推论 "+(number+1)+".</b>" +
 								"<span class=\"supsub\">" +
 									"<span class=\"superscript\">" +
 										"<span class=\"ng-binding\" ng-bind-html=\"trustedPrettifyNumber(player.producerUpgradeLevel["+number+"])\"></span>" +
@@ -167,11 +167,11 @@ angular.module('incremental',['ngAnimate']).directive('onFinishRender', function
 									"<span class=\"subscript\" class=\"ng-binding\" ng-bind-html=\"trustedPrettifyNumber(player.producerUpgradeManual["+number+"])\"></span>" +
 								"</span>";
 					}else{						
-						upgradeDiv.innerHTML = "<b>Corollary "+(number+1)+".</b>" +
+						upgradeDiv.innerHTML = "<b>推论 "+(number+1)+".</b>" +
 						"<span class=\"supsub\">" +
 							"<span class=\"superscript\">" +
 								"<span class=\"ng-binding\" ng-bind-html=\"trustedPrettifyNumber(player.producerUpgradeLevel["+number+"])\"></span>" +
-								"<span class=\"mathjax_corollary\">$$\\quad \\frac{n(t)}{"+prettifyNumberTeX($scope.player.producerUpgradePrice[number])+"} \\Rightarrow\\; $$ Corollary "+(number)+"$$(t+1) = $$ Corollary "+(number)+"$$(t) + 1$$</span>" +
+								"<span class=\"mathjax_corollary\">$$\\quad \\frac{n(t)}{"+prettifyNumberTeX($scope.player.producerUpgradePrice[number])+"} \\Rightarrow\\; $$ 推论 "+(number)+"$$(t+1) = $$ 推论 "+(number)+"$$(t) + 1$$</span>" +
 							"</span>" +
 							"<span class=\"subscript\" class=\"ng-binding\" ng-bind-html=\"trustedPrettifyNumber(player.producerUpgradeManual["+number+"])\"></span>" +
 						"</span>";
@@ -229,7 +229,7 @@ angular.module('incremental',['ngAnimate']).directive('onFinishRender', function
 					$scope.player.producerUpgradeManual[i] = new Decimal($scope.player.producerUpgradeManual[i]);					
 				}
 			}catch(err){
-				alert("Error loading savegame, reset forced.")
+				alert("加载存档失败，强制重置你的进度。")
 				$scope.reset(false);
 			}
 		}
@@ -237,7 +237,7 @@ angular.module('incremental',['ngAnimate']).directive('onFinishRender', function
 		$scope.reset = function reset(ask) {
 			var confirmation = true;
 			if(ask){
-				confirmation = confirm("Are you sure you want to retire? This will permanently erase your progress.");
+				confirmation = confirm("你真的要退休？这会清除所有的进度。");
 			}
 			
 			if(confirmation === true){
@@ -383,10 +383,10 @@ angular.module('incremental',['ngAnimate']).directive('onFinishRender', function
 			versionComparison = versionCompare($scope.player.version,'0.11');
 			if(versionComparison === -1 || versionComparison === false){
 				if(ifImport){
-					alert("This save is incompatible with the current version.");
+					alert("该存档无法与目前版本的游戏兼容。");
 					return;
 				}
-				alert("Your save has been wiped as part of an update. Sorry for the inconvenience.\n");
+				alert("很抱歉，你的存档在更新中消失了。\n");
 				$scope.reset(false);
 				localStorage.setItem("playerStored", JSON.stringify($scope.player));
 				
