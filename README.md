@@ -1,4 +1,4 @@
-English | 中文
+[English](https://github.com/GSUI5051/TrueExponential-zhCN/blob/master/README.md#trueexponential) | [中文](https://github.com/GSUI5051/TrueExponential-zhCN/blob/master/README.md#%E7%9C%9F%E6%8C%87%E6%95%B0)
 
 真·指数
 ===============
