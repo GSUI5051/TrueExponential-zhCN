@@ -53,32 +53,32 @@ angular.module('incremental',['ngAnimate']).directive('onFinishRender', function
 		balance the goals
 		*/
 		// Constants
-		$scope.prestigeGoal = [new Decimal("1"),
-							new Decimal("2"),
-							new Decimal("3"),
-							new Decimal("4e6"),
-							new Decimal("5"),
-							new Decimal("6"),
-							new Decimal("7"),
-							new Decimal("8"),
-							new Decimal("9"),
-							new Decimal("10"),
-							new Decimal("11"),
-							new Decimal("12")];
+		$scope.prestigeGoal = [new Decimal("1e2"),
+							new Decimal("1e5"),
+							new Decimal("1e15"),
+							new Decimal("1e200"),
+							new Decimal("1e1250"),
+							new Decimal("1e2500"),
+							new Decimal("1e5000"),
+							new Decimal("1e12500"),
+							new Decimal("1e25000"),
+							new Decimal("1e50000"),
+							new Decimal("1e100000"),
+							new Decimal("1e9000000000000000")];
 		
 		$scope.prestigeTier = 0;
 		// Constants
-		$scope.secondPrestigeGoal = [new Decimal("1"),
-			 							new Decimal("2"),
-										new Decimal("3"),
-										new Decimal("4"),
-										new Decimal("5"),
-										new Decimal("6"),
-										new Decimal("7"),
-										new Decimal("8"),
-										new Decimal("9"),
-										new Decimal("10"),
-										new Decimal("11")];
+		$scope.secondPrestigeGoal = [new Decimal("1e4"),
+			 							new Decimal("1e500"),
+										new Decimal("1e3000"),
+										new Decimal("1e10000"),
+										new Decimal("1e25000"),
+										new Decimal("1e50000"),
+										new Decimal("1e125000"),
+										new Decimal("1e250000"),
+										new Decimal("1e500000"),
+										new Decimal("1e1000000"),
+										new Decimal("1e2500000")];
 		
 		var producerUpgradeBasePrice = [];
 						
