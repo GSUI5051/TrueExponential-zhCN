@@ -7,14 +7,6 @@
 <script type="text/javascript" src="js/decimal.min.js"></script>
 <script type="text/javascript" src="js/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <link rel="stylesheet" type="text/css" href="styles/main.css">
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-58136427-1', 'auto');
-    ga('send', 'pageview');
-</script>
 <html ng-app="incremental" ng-controller="IncCtrl">
 	<head>
 		<title ng-if="!sprintFinished && !player.preferences.logscale">{{Math.max(Math.floor((player.n.div(getGoal()))*1000)/10,0)}}%</title>
@@ -24,23 +16,23 @@
 	<body>
 		<div ng-if="loading">
 		        <center>
-				  <h2>Calculating offline progress {{offlineProgress}}%</h2>
+				  <h2>正在计算离线进度 {{offlineProgress}}%</h2>
 				</center>			
 		</div>
 		<div ng-if="!loading">
-		   <div class="title">$$\text{True}^\text{xponential}\scriptstyle \text{: On sequences of numbers for which } \\\scriptstyle \alpha^n \le a(n) \le \beta^n \text{ for some } 1 \le \alpha \le \beta \text{ and all large } n$$</div>
-		   <div class="author">$$\text{angarg12}^{\dagger}\text{, GPLv2 license, version {{version}}}$$</div>
-		   <div class="abstract" ng-click="player.preferences.abstractVisible = !player.preferences.abstractVisible"><b class="clickable">Abstract.</b> <span class="animate-show" ng-show="player.preferences.abstractVisible">Each instant <i>t</i>, <i>n</i> is multiplied by the value of your multiplier. Buy lemmas to increase your multiplier. Each second you get some flat <i>n</i>(<i>t</i>). Buying divides <i>n</i>(<i>t</i>) by a Lemma price. Text in <span class="clickable">red underline</span> is clickable. Get <i>n</i>(<i>t</i>) to the value of the Theorem to prove it. Start a new experiment to prestige. Rerun previous experiments to best your own time.</span></div>
+		   <div class="title">$$\text{真·指数：On sequences of numbers for which } \\\scriptstyle \alpha^n \le a(n) \le \beta^n \text{ for some } 1 \le \alpha \le \beta \text{ and all large } n$$</div>
+		   <div class="author">$$\text{angarg12}^{\dagger}\text{, GSUI5051 汉化，该汉化项目按 GPLv2 许可证 {{version}} 版授权}$$</div>
+		   <div class="abstract" ng-click="player.preferences.abstractVisible = !player.preferences.abstractVisible"><b class="clickable">摘要.</b> <span class="animate-show" ng-show="player.preferences.abstractVisible">在每个时刻 <i>t</i>, 你的 <i>n</i>(<i>t</i>) 都会乘以倍增器 <i>r</i>(<i>t</i>) 的值。购买引理或推论可以提高倍增器 <i>r</i>(<i>t</i>) 的值。因此在每个时刻，<i>n</i>(<i>t</i>) 都会有一定的增长。购买引理或推论后，你的 <i>n</i>(<i>t</i>) 将会被引理或推论的价格相除。带有<span class="clickable">红色下划线</span>的文字可以点击。你需要让 <i>n</i>(<i>t</i>) 达到证明该定理所需要的数值。点击“证明新的定理”进行转生。重新对已经证明的定理进行证明，可以刷新证明用时的记录。</span></div>
 		   <div class="main_text">
 			<div id="game">
-				<div class="section">1. State of the art</div>
-				<div class="line"><b>Axiom.</b>&nbsp;&nbsp;&nbsp;&nbsp;<i>n</i>(<i>t</i>) = <span ng-bind-html="trustedPrettifyNumber(player.n)"/></div>
-				<div class="line"><b>Axiom.</b>&nbsp;&nbsp;&nbsp;&nbsp; <i>r</i>(<i>t</i>) = <span ng-bind-html="trustedPrettifyNumber(player.multiplier)"/></div>
-				<div class="line" ng-if="isEndgame(currentPrestige) == false"><b>Axiom.</b>&nbsp;&nbsp;&nbsp;&nbsp; <i>n</i>(<i>t</i>+1) = <i>n</i>(<i>t</i>) &#215; <i>r</i>(<i>t</i>)</div>
-				<div class="line" ng-if="isEndgame(currentPrestige)"><b>Axiom.</b>&nbsp;&nbsp;&nbsp;&nbsp; <i>n</i>(<i>t</i>+1) = <i>n</i>(<i>t</i>)<sup><i>r</i>(<i>t</i>)</sup></div>
-				<div class="line"><b>Axiom.</b>&nbsp;&nbsp;&nbsp;&nbsp; <i>t</i> = <span>{{getSprintTime()}}</span></div>
-				<div class="line"><b>Theorem<span ng-if="prestigeTier == 1"><sup>&prime;</sup></span> {{currentPrestige}}.</b>&nbsp;&nbsp;&nbsp;&nbsp; <i>n</i>(<i>t</i>) $$\equiv$$ <span ng-bind-html="trustedPrettifyNumber(getGoal())"></span><span ng-if="sprintFinished" style="float:right">&#8718;</span></div>
-				<div class="line"><b>Lemma.</b>&nbsp;&nbsp;&nbsp;&nbsp; <i>n</i>(<i>t</i>+1) = <i>n</i>(<i>t</i>) + <span ng-bind-html="trustedPrettifyNumber(getFlatIncome())"/></div>  
+				<div class="section">1. 前言</div>
+				<div class="line"><b>公理.</b>&nbsp;&nbsp;&nbsp;&nbsp;<i>n</i>(<i>t</i>) = <span ng-bind-html="trustedPrettifyNumber(player.n)"/></div>
+				<div class="line"><b>公理.</b>&nbsp;&nbsp;&nbsp;&nbsp; <i>r</i>(<i>t</i>) = <span ng-bind-html="trustedPrettifyNumber(player.multiplier)"/></div>
+				<div class="line" ng-if="isEndgame(currentPrestige) == false"><b>公理.</b>&nbsp;&nbsp;&nbsp;&nbsp; <i>n</i>(<i>t</i>+1) = <i>n</i>(<i>t</i>) &#215; <i>r</i>(<i>t</i>)</div>
+				<div class="line" ng-if="isEndgame(currentPrestige)"><b>公理.</b>&nbsp;&nbsp;&nbsp;&nbsp; <i>n</i>(<i>t</i>+1) = <i>n</i>(<i>t</i>)<sup><i>r</i>(<i>t</i>)</sup></div>
+				<div class="line"><b>公理.</b>&nbsp;&nbsp;&nbsp;&nbsp; <i>t</i> = <span>{{getSprintTime()}}</span></div>
+				<div class="line"><b>定理<span ng-if="prestigeTier == 1"><sup>&prime;</sup></span> {{currentPrestige}}.</b>&nbsp;&nbsp;&nbsp;&nbsp; <i>n</i>(<i>t</i>) $$\equiv$$ <span ng-bind-html="trustedPrettifyNumber(getGoal())"></span><span ng-if="sprintFinished" style="float:right">&#8718;</span></div>
+				<div class="line"><b>引理.</b>&nbsp;&nbsp;&nbsp;&nbsp; <i>n</i>(<i>t</i>+1) = <i>n</i>(<i>t</i>) + <span ng-bind-html="trustedPrettifyNumber(getFlatIncome())"/></div>  
 				<div class="progress-striped">
 					<div ng-if="!sprintFinished">
 						<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0" style="width:{{player.n.div(getGoal())*100}}%" ng-if="!player.preferences.logscale">
@@ -56,10 +48,10 @@
 						</div>
 					</div>
 				</div>
-				<div class="line">Use log scale <input type="checkbox" ng-model="player.preferences.logscale"></div>			
+				<div class="line">使用对数标度 <input type="checkbox" ng-model="player.preferences.logscale"></div>			
 			</div>
 			<div id="buildings">
-				<div class="section">2. Contributions</div>
+				<div class="section">2. 证明</div>
 				<br>
 				<div ng-repeat="upgrade in [] | range:player.multiplierUpgradeLevel.length" on-finish-render="ngRepeatFinished" ng-if="prestigeTier == 0">
 					<div class="line" id="multiplierUpgrade{{$index}}" 
@@ -81,19 +73,19 @@
 				</div>
 			</div>
 			<div id="sprints" ng-if="player.maxPrestige >= 0">
-				<div class="section">3. Experimental results ({{player.sprintTimes.length+player.sprintSecondTimes.length}}/{{prestigeGoal.length+secondPrestigeGoal.length}})</div>
+				<div class="section">3. 实验结果 ({{player.sprintTimes.length+player.sprintSecondTimes.length}}/{{prestigeGoal.length+secondPrestigeGoal.length}})</div>
 				<br>
 				<table id="sprintsTable" class="table" align="center">
 					<thead>
 						<tr>
 							<td>
-								Theorem
+								定理
 							</td>
 							<td>
-								Runtime
+								证明用时
 							</td>
 							<td>
-								Rerun
+								重新证明
 							</td>
 						</tr>
 					</thead>
@@ -115,13 +107,13 @@
 					<thead>
 						<tr>
 							<td>
-								Theorem<sup>&prime;</sup>
+								定理<sup>&prime;</sup>
 							</td>
 							<td>
-								Runtime
+								证明用时
 							</td>
 							<td>
-								Rerun
+								重新证明
 							</td>
 						</tr>
 					</thead>
@@ -141,28 +133,28 @@
 				</table>
 			</div>
 			<div id="options">	            
-				<div class="section" ng-if="player.maxPrestige < 0">3. Conclusion</div>
-				<div class="section" ng-if="player.maxPrestige >= 0">4. Conclusion</div>
-				<div class="line clickable" id="prestige" ng-click="prestige(player.sprintTimes.length, 0)" ng-if="currentPrestige <= player.maxPrestige && player.sprintTimes.length < prestigeGoal.length">Start next experiment</div>
-				<div class="line clickable" id="prestige2" ng-click="prestige(player.sprintSecondTimes.length, 1)" ng-if="((prestigeTier == 0 && player.sprintTimes.length > 3) || (prestigeTier == 1 && currentPrestige <= player.maxSecondPrestige)) && player.sprintSecondTimes.length < secondPrestigeGoal.length">Start next experiment<sup>&prime;</sup></div>
-				<div class="line clickable" id="reset" ng-click="reset(true)">Retire</div>
-				<div class="line" id="save"><span class="clickable" ng-click="save()">Save experiment</span>&nbsp; Last: {{lastSave}}</div>
+				<div class="section" ng-if="player.maxPrestige < 0">3. 结论</div>
+				<div class="section" ng-if="player.maxPrestige >= 0">4. 结论</div>
+				<div class="line clickable" id="prestige" ng-click="prestige(player.sprintTimes.length, 0)" ng-if="currentPrestige <= player.maxPrestige && player.sprintTimes.length < prestigeGoal.length">证明新的定理</div>
+				<div class="line clickable" id="prestige2" ng-click="prestige(player.sprintSecondTimes.length, 1)" ng-if="((prestigeTier == 0 && player.sprintTimes.length > 3) || (prestigeTier == 1 && currentPrestige <= player.maxSecondPrestige)) && player.sprintSecondTimes.length < secondPrestigeGoal.length">证明新的定理<sup>&prime;</sup></div>
+				<div class="line clickable" id="reset" ng-click="reset(true)">退休</div>
+				<div class="line" id="save"><span class="clickable" ng-click="save()">存档</span>&nbsp; 存档时间: {{lastSave}}</div>
 			</div>	     
 			<div id="acknowledgements">	
-				<div class="section">Acknowledgements</div>
-				<div class="acknowledgements">Thanks to NoDownvotesPlease for the initial code, tangentialThinker (Derivative Clicker) for the save system, kawaritai (Swarm Simulator) for the progress bar, r/incremental_games/ for the comments, feedback and support.</div>
+				<div class="section">致谢</div>
+				<div class="acknowledgements">感谢 NoDownvotesPlease 提供的初始代码，tangentialThinker（导数点击的作者）提供的存档系统，kawaritai （模拟虫群的作者）制作的进度条，来自 r/incremental_games/ 增量放置游戏社区用户的评论、反馈和支持。</div>
 			</div>
 			<div id="links">	
-				<div class="section">Bibliography</div>
-				<div class="bibliography">[1] <i>Initial code</i>, <a href="http://jsfiddle.net/6a7yhyjv/">http://jsfiddle.net/6a7yhyjv/</a></div>
-				<div class="bibliography">[2] <i>AngularJS - Superheroic JavaScript MVW Framework</i>, <a href="https://angularjs.org/">https://angularjs.org/</a></div>
-				<div class="bibliography">[3] <i>decimal.js - An arbitrary-precision Decimal type for JavaScript</i>, <a href="https://github.com/MikeMcl/decimal.js/">https://github.com/MikeMcl/decimal.js/</a></div>
-				<div class="bibliography">[4] <i>MathJax - Beautiful math in all browsers</i>. A JavaScript display engine for mathematics that works in all browsers. <a href="http://www.mathjax.org/">http://www.mathjax.org/</a></div>
-				<div class="bibliography">[5] <i>Derivative Clicker</i>, <a href="http://gzgreg.github.io/DerivativeClicker/">http://gzgreg.github.io/DerivativeClicker/</a></div>
-				<div class="bibliography">[6] <i>Swarm Simulator</i>, <a href="https://swarmsim.github.io">https://swarmsim.github.io</a></div>
-				<div class="bibliography">[7] <i>/r/incremental_games/</i>, an incremental games community, <a href="http://www.reddit.com/r/incremental_games/">http://www.reddit.com/r/incremental_games/</a></div>
+				<div class="section">参考文献</div>
+				<div class="bibliography">[1] <i>初始代码</i>， <a href="http://jsfiddle.net/6a7yhyjv/">http://jsfiddle.net/6a7yhyjv/</a></div>
+				<div class="bibliography">[2] <i>AngularJS - 超赞的 JavaScript MVW 框架</i>， <a href="https://angularjs.org/">https://angularjs.org/</a></div>
+				<div class="bibliography">[3] <i>decimal.js - 用于在 JavaScript 中显示任意精度十进制小数的库</i>，<a href="https://github.com/MikeMcl/decimal.js/">https://github.com/MikeMcl/decimal.js/</a></div>
+				<div class="bibliography">[4] <i>MathJax - 在浏览器中显示漂亮的数学算式</i>. 它是一个能在各种浏览器中使用的 JavaScript 数学算式显示引擎。<a href="http://www.mathjax.org/">http://www.mathjax.org/</a></div>
+				<div class="bibliography">[5] <i>导数点击</i>，<a href="http://gzgreg.github.io/DerivativeClicker/">http://gzgreg.github.io/DerivativeClicker/</a></div>
+				<div class="bibliography">[6] <i>模拟虫群</i>，<a href="https://swarmsim.github.io">https://swarmsim.github.io</a></div>
+				<div class="bibliography">[7] <i>/r/incremental_games/</i>，增量放置游戏社区， <a href="http://www.reddit.com/r/incremental_games/">http://www.reddit.com/r/incremental_games/</a></div>
 			</div>
-			<div id="footer" class="footer">\(\dagger\) <a href="changelog.txt" target="_newtab">Changelog</a> | <a href="https://github.com/angarg12/TrueExponential" target="_newtab">Github</a></div>
+			<div id="footer" class="footer">\(\dagger\) <a href="changelog.txt" target="_newtab">更新日志</a> | <a href="https://github.com/angarg12/TrueExponential" target="_newtab">源代码（Github）</a></div>
 		   </div>
 		</div>
 	</body>
