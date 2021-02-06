@@ -1,5 +1,9 @@
 [English](https://github.com/GSUI5051/TrueExponential-zhCN/blob/master/README.md#trueexponential) | [中文](https://github.com/GSUI5051/TrueExponential-zhCN/blob/master/README.md#%E7%9C%9F%E6%8C%87%E6%95%B0)
 
+英文版链接（Original Version Link）:[https://angarg12.github.io/TrueExponential/](https://angarg12.github.io/TrueExponential/)
+中文版（Chinese Version）:[https://gsui5051.github.io/TrueExponential-zhCN/](https://gsui5051.github.io/TrueExponential-zhCN/)
+中文版备用链接：[http://likexia.gitee.io/trueexponential/](http://likexia.gitee.io/trueexponential/)
+
 真·指数
 ===============
 以下所有的“我”均指原作者[angarg12](https://github.com/angarg12) ——译者注
